@@ -16,6 +16,9 @@ public class PhoneCharges
     
     public PhoneCharges()
     {
+        final int WINDOW_WIDTH = 280;
+        final int WINDOW_HEIGHT = 235;
+        
         final double DAYTIME_RATE = 0.25;
         final double EVENING_RATE = 0.12;
         final double OFFPEAK_RATE = 0.05;
@@ -67,7 +70,7 @@ public class PhoneCharges
         
         // Display the frame on the screen
         phoneChargesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        phoneChargesFrame.pack();
+        phoneChargesFrame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         phoneChargesFrame.setLocationRelativeTo(null); // center on screen
         phoneChargesFrame.setVisible(true);
     }
