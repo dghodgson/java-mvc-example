@@ -33,6 +33,12 @@ public class PhoneCharges
         phoneChargesRateDaytimeRB.addActionListener(new RadioButtonListener(DAYTIME_RATE));
         phoneChargesRateEveningRB.addActionListener(new RadioButtonListener(EVENING_RATE));
         phoneChargesRateOffpeakRB.addActionListener(new RadioButtonListener(OFFPEAK_RATE));
+
+        phoneChargesDurationLabel = new JLabel("Minutes: ");
+        phoneChargesDurationTextField = new JTextField(10);
+        
+        phoneChargesButton = new JButton("Calculate Charges");
+        phoneChargesButton.addActionListener(new CalcButtonListener());
     }
 
     private class RadioButtonListener implements ActionListener
