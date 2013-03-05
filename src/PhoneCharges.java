@@ -57,6 +57,19 @@ public class PhoneCharges
         phoneChargesButtonPanel = new JPanel();
         phoneChargesDurationPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         phoneChargesButtonPanel.add(phoneChargesButton);
+
+        // Create a frame and add the panels
+        phoneChargesFrame = new JFrame("Phone Charges");
+        phoneChargesFrame.setLayout(new FlowLayout(FlowLayout.CENTER));
+        phoneChargesFrame.add(phoneChargesRatePanel);
+        phoneChargesFrame.add(phoneChargesDurationPanel);
+        phoneChargesFrame.add(phoneChargesButtonPanel);
+        
+        // Display the frame on the screen
+        phoneChargesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        phoneChargesFrame.pack();
+        phoneChargesFrame.setLocationRelativeTo(null); // center on screen
+        phoneChargesFrame.setVisible(true);
     }
 
     private class RadioButtonListener implements ActionListener
