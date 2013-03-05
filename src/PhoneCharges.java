@@ -28,14 +28,16 @@ public class PhoneCharges
         phoneChargesRateEveningRB = new JRadioButton("Evening - 5:00 p.m. to 11:00 p.m.", false);
         phoneChargesRateOffpeakRB = new JRadioButton("Off-Peak - 11:00 p.m. to 8:00 a.m.", false);
         
-        ButtonGroup group = new ButtonGroup();
-        group.add(phoneChargesRateDaytimeRB);
-        group.add(phoneChargesRateEveningRB);
-        group.add(phoneChargesRateOffpeakRB);
-        
-        phoneChargesRateDaytimeRB.addActionListener(new RadioButtonListener(DAYTIME_RATE));
-        phoneChargesRateEveningRB.addActionListener(new RadioButtonListener(EVENING_RATE));
-        phoneChargesRateOffpeakRB.addActionListener(new RadioButtonListener(OFFPEAK_RATE));
+            // Put radio buttons in same group
+            ButtonGroup group = new ButtonGroup();
+            group.add(phoneChargesRateDaytimeRB);
+            group.add(phoneChargesRateEveningRB);
+            group.add(phoneChargesRateOffpeakRB);
+            
+            // Add listeners for radio buttons
+            phoneChargesRateDaytimeRB.addActionListener(new RadioButtonListener(DAYTIME_RATE));
+            phoneChargesRateEveningRB.addActionListener(new RadioButtonListener(EVENING_RATE));
+            phoneChargesRateOffpeakRB.addActionListener(new RadioButtonListener(OFFPEAK_RATE));
 
         phoneChargesDurationLabel = new JLabel("Minutes: ");
         phoneChargesDurationTextField = new JTextField(10);
