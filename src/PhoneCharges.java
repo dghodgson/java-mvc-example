@@ -7,10 +7,32 @@ import javax.swing.*;
 
 public class PhoneCharges
 {
-
+    private static JFrame       phoneChargesFrame;
+    private static JPanel       phoneChargesRatePanel, phoneChargesDurationPanel, phoneChargesButtonPanel;
+    private static JRadioButton phoneChargesRateDaytimeRB, phoneChargesRateEveningRB, phoneChargesRateOffpeakRB;
+    private static JLabel       phoneChargesDurationLabel;
+    private static JTextField   phoneChargesDurationTextField;
+    private static JButton      phoneChargesButton;
+    
     public PhoneCharges()
     {
+        final double DAYTIME_RATE = 0.25;
+        final double EVENING_RATE = 0.12;
+        final double OFFPEAK_RATE = 0.05;
+
+        // Create GUI components
+        phoneChargesRateDaytimeRB = new JRadioButton("Daytime - 8:00 a.m. to 5:00 p.m.", true);
+        phoneChargesRateEveningRB = new JRadioButton("Evening - 5:00 p.m. to 11:00 p.m.", false);
+        phoneChargesRateOffpeakRB = new JRadioButton("Off-Peak - 11:00 p.m. to 8:00 a.m.", false);
         
+        ButtonGroup group = new ButtonGroup();
+        group.add(phoneChargesRateDaytimeRB);
+        group.add(phoneChargesRateEveningRB);
+        group.add(phoneChargesRateOffpeakRB);
+        
+        phoneChargesRateDaytimeRB.addActionListener(new RadioButtonListener(DAYTIME_RATE));
+        phoneChargesRateEveningRB.addActionListener(new RadioButtonListener(EVENING_RATE));
+        phoneChargesRateOffpeakRB.addActionListener(new RadioButtonListener(OFFPEAK_RATE));
     }
 
     private class RadioButtonListener implements ActionListener
