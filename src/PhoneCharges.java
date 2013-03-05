@@ -39,6 +39,24 @@ public class PhoneCharges
         
         phoneChargesButton = new JButton("Calculate Charges");
         phoneChargesButton.addActionListener(new CalcButtonListener());
+
+        // Create panels and add components
+        phoneChargesRatePanel = new JPanel();
+        phoneChargesRatePanel.setLayout(new GridLayout(3,1));
+        phoneChargesRatePanel.setBorder(BorderFactory.createTitledBorder("Select a Rate"));
+        phoneChargesRatePanel.add(phoneChargesRateDaytimeRB);
+        phoneChargesRatePanel.add(phoneChargesRateEveningRB);
+        phoneChargesRatePanel.add(phoneChargesRateOffpeakRB);
+        
+        phoneChargesDurationPanel = new JPanel();
+        phoneChargesDurationPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        phoneChargesDurationPanel.setBorder(BorderFactory.createTitledBorder("Duration of Call"));
+        phoneChargesDurationPanel.add(phoneChargesDurationLabel);
+        phoneChargesDurationPanel.add(phoneChargesDurationTextField);
+        
+        phoneChargesButtonPanel = new JPanel();
+        phoneChargesDurationPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        phoneChargesButtonPanel.add(phoneChargesButton);
     }
 
     private class RadioButtonListener implements ActionListener
