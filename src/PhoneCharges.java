@@ -2,6 +2,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.*;
 
@@ -113,6 +114,15 @@ public class PhoneCharges
         {
             // TODO Auto-generated method stub
             
+        public void displayCharges(int duration, double rate, double charges)
+        {
+            DecimalFormat formatter = new DecimalFormat("#0.00");
+            
+            JOptionPane.showMessageDialog(
+                    null,
+                    duration + " minutes at the rate of $" + rate + " per minute. \n" +
+                    "Total Charges are $" + formatter.format(charges)
+                    );
         }
         
         public void setRate(double r)
