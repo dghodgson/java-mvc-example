@@ -66,4 +66,46 @@ public class PhoneChargesController
             }
         }
     }
+
+    /**
+     * Listener class for Rate radio buttons: 
+     * Calls on view to get available radio buttons, 
+     * calls on Model to set rate according to which radio button is selected
+     *
+     * @author Daniel Hodgson (daniel.hodgson@codeprogrammers.net)
+     * @version 1.0
+     */
+    class RateButtonListener implements ActionListener
+    {
+        //  Even though the variables we're accessing from our model are static,
+        //+ if we access them through the object provided by the constructor,
+        //+ we don't have to worry about whether or not we're using the same model our constructor is.
+        //+ This will make debugging easier in the event we decide to implement multiple models.
+        @SuppressWarnings ("static-access")
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            // Get the available radio buttons in the Rate panel
+            JRadioButton[] button = view.getRateButtons();
+
+            JRadioButton daytime = button[0];
+            JRadioButton evening = button[1];
+            JRadioButton offpeak = button[2];
+
+            // Check which radio button is selected and set the charge rate accordingly
+            if (e.getSource() == daytime)
+            {
+                model.setRate(model.DAYTIME_RATE);
+            }
+            else if (e.getSource() == evening)
+            {
+                model.setRate(model.EVENING_RATE);
+            }
+            else if (e.getSource() == offpeak)
+            {
+                model.setRate(model.OFFPEAK_RATE);
+            }
+        }
+    }
+
 }
