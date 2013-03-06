@@ -89,10 +89,19 @@ public class PhoneCharges
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            // TODO Auto-generated method stub
-            
+            if (e.getSource() == rateDaytimeRB)
+            {
+                calculateButtonListener.setRate(DAYTIME_RATE);
+            }
+            else if (e.getSource() == rateEveningRB)
+            {
+                calculateButtonListener.setRate(EVENING_RATE);
+            }
+            else if (e.getSource() == rateOffpeakRB)
+            {
+                calculateButtonListener.setRate(OFFPEAK_RATE);
+            }
         }
-        
     }
     
     private class CalcButtonListener implements ActionListener
