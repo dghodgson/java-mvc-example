@@ -85,6 +85,17 @@ public class PhoneChargesView extends JFrame
     }
 
     /**
+     * Gets the radio buttons used for selecting the minutely rates in the Rates panel
+     *
+     * @return an array of JRadioButton objects, one for each radio button in the Rates panel
+     */
+    JRadioButton[] getRateButtons()
+    {
+        JRadioButton[] array = {rateDaytimeRB, rateEveningRB, rateOffpeakRB};
+        return array;
+    }
+
+    /**
      * Displays a message dialog with the duration of the call, the minutely rate, and the charges owed
      *
      * @param duration  the duration of the call in minutes
