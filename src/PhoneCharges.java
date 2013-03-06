@@ -112,8 +112,26 @@ public class PhoneCharges
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            // TODO Auto-generated method stub
-            
+            double charges;
+            int duration;
+            String input;
+
+            try // If input isn't a number, display an error message
+            {
+                input = durationTextField.getText();
+                duration = Integer.parseInt(input);
+                charges = duration * rate;
+                displayCharges(duration, rate, charges);
+            }
+            catch (NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null,
+                        "Minutes not valid",
+                        "Input error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
         public void displayCharges(int duration, double rate, double charges)
         {
             DecimalFormat formatter = new DecimalFormat("#0.00");
