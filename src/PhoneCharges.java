@@ -8,12 +8,13 @@ import javax.swing.*;
 public class PhoneCharges
 {
     private static JFrame       phoneChargesFrame;
-    private static JPanel       phoneChargesRatePanel, phoneChargesDurationPanel, phoneChargesButtonPanel;
-    private static JRadioButton phoneChargesRateDaytimeRB, phoneChargesRateEveningRB, phoneChargesRateOffpeakRB;
-    private static JLabel       phoneChargesDurationLabel;
-    private static JTextField   phoneChargesDurationTextField;
-    private static JButton      phoneChargesButton;
+    private static JPanel       ratePanel, durationPanel, calculatePanel;
+    private static JRadioButton rateDaytimeRB, rateEveningRB, rateOffpeakRB;
+    private static JLabel       durationLabel;
+    private static JTextField   durationTextField;
+    private static JButton      calculateButton;
     
+    private static CalcButtonListener calculateButtonListener;
     public PhoneCharges()
     {
         final int WINDOW_WIDTH = 280;
@@ -24,51 +25,52 @@ public class PhoneCharges
         final double OFFPEAK_RATE = 0.05;
 
         // Create GUI components
-        phoneChargesRateDaytimeRB = new JRadioButton("Daytime - 8:00 a.m. to 5:00 p.m.", true);
-        phoneChargesRateEveningRB = new JRadioButton("Evening - 5:00 p.m. to 11:00 p.m.", false);
-        phoneChargesRateOffpeakRB = new JRadioButton("Off-Peak - 11:00 p.m. to 8:00 a.m.", false);
+        rateDaytimeRB = new JRadioButton("Daytime - 8:00 a.m. to 5:00 p.m.", true);
+        rateEveningRB = new JRadioButton("Evening - 5:00 p.m. to 11:00 p.m.", false);
+        rateOffpeakRB = new JRadioButton("Off-Peak - 11:00 p.m. to 8:00 a.m.", false);
         
             // Put radio buttons in same group
             ButtonGroup group = new ButtonGroup();
-            group.add(phoneChargesRateDaytimeRB);
-            group.add(phoneChargesRateEveningRB);
-            group.add(phoneChargesRateOffpeakRB);
+            group.add(rateDaytimeRB);
+            group.add(rateEveningRB);
+            group.add(rateOffpeakRB);
             
             // Add listeners for radio buttons
-            phoneChargesRateDaytimeRB.addActionListener(new RadioButtonListener(DAYTIME_RATE));
-            phoneChargesRateEveningRB.addActionListener(new RadioButtonListener(EVENING_RATE));
-            phoneChargesRateOffpeakRB.addActionListener(new RadioButtonListener(OFFPEAK_RATE));
+            rateDaytimeRB.addActionListener(new RadioButtonListener());
+            rateEveningRB.addActionListener(new RadioButtonListener());
+            rateOffpeakRB.addActionListener(new RadioButtonListener());
 
-        phoneChargesDurationLabel = new JLabel("Minutes: ");
-        phoneChargesDurationTextField = new JTextField(10);
+        durationLabel = new JLabel("Minutes: ");
+        durationTextField = new JTextField(10);
         
-        phoneChargesButton = new JButton("Calculate Charges");
-        phoneChargesButton.addActionListener(new CalcButtonListener());
+        calculateButton = new JButton("Calculate Charges");
+        calculateButtonListener = new CalcButtonListener();
+        calculateButton.addActionListener(calculateButtonListener);
 
         // Create panels and add components
-        phoneChargesRatePanel = new JPanel();
-        phoneChargesRatePanel.setLayout(new GridLayout(3,1));
-        phoneChargesRatePanel.setBorder(BorderFactory.createTitledBorder("Select a Rate"));
-        phoneChargesRatePanel.add(phoneChargesRateDaytimeRB);
-        phoneChargesRatePanel.add(phoneChargesRateEveningRB);
-        phoneChargesRatePanel.add(phoneChargesRateOffpeakRB);
+        ratePanel = new JPanel();
+        ratePanel.setLayout(new GridLayout(3,1));
+        ratePanel.setBorder(BorderFactory.createTitledBorder("Select a Rate"));
+        ratePanel.add(rateDaytimeRB);
+        ratePanel.add(rateEveningRB);
+        ratePanel.add(rateOffpeakRB);
         
-        phoneChargesDurationPanel = new JPanel();
-        phoneChargesDurationPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        phoneChargesDurationPanel.setBorder(BorderFactory.createTitledBorder("Duration of Call"));
-        phoneChargesDurationPanel.add(phoneChargesDurationLabel);
-        phoneChargesDurationPanel.add(phoneChargesDurationTextField);
+        durationPanel = new JPanel();
+        durationPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        durationPanel.setBorder(BorderFactory.createTitledBorder("Duration of Call"));
+        durationPanel.add(durationLabel);
+        durationPanel.add(durationTextField);
         
-        phoneChargesButtonPanel = new JPanel();
-        phoneChargesDurationPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        phoneChargesButtonPanel.add(phoneChargesButton);
+        calculatePanel = new JPanel();
+        durationPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        calculatePanel.add(calculateButton);
 
         // Create a frame and add the panels
         phoneChargesFrame = new JFrame("Phone Charges");
         phoneChargesFrame.setLayout(new FlowLayout(FlowLayout.CENTER));
-        phoneChargesFrame.add(phoneChargesRatePanel);
-        phoneChargesFrame.add(phoneChargesDurationPanel);
-        phoneChargesFrame.add(phoneChargesButtonPanel);
+        phoneChargesFrame.add(ratePanel);
+        phoneChargesFrame.add(durationPanel);
+        phoneChargesFrame.add(calculatePanel);
         
         // Display the frame on the screen
         phoneChargesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,7 +90,7 @@ public class PhoneCharges
         }
         
         @Override
-        public void actionPerformed(ActionEvent arg0)
+        public void actionPerformed(ActionEvent e)
         {
             // TODO Auto-generated method stub
             
@@ -100,7 +102,7 @@ public class PhoneCharges
     {
 
         @Override
-        public void actionPerformed(ActionEvent arg0)
+        public void actionPerformed(ActionEvent e)
         {
             // TODO Auto-generated method stub
             
