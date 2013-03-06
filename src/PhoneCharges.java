@@ -97,7 +97,8 @@ public class PhoneCharges
     
     private class CalcButtonListener implements ActionListener
     {
-
+        private double rate;
+        
         @Override
         public void actionPerformed(ActionEvent e)
         {
@@ -105,6 +106,10 @@ public class PhoneCharges
             
         }
         
+        public void setRate(double r)
+        {
+            rate = r;
+        }
     }
 
     public static void main(String[] args)
