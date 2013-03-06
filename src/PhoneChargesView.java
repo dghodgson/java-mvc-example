@@ -83,4 +83,35 @@ public class PhoneChargesView extends JFrame
     {
         return durationTextField.getText();
     }
+
+    /**
+     * Displays a message dialog with the duration of the call, the minutely rate, and the charges owed
+     *
+     * @param duration  the duration of the call in minutes
+     * @param rate      the cost per minute for the call
+     * @param charges   the charges owed
+     */
+    void showCharges(int duration, double rate, double charges)
+    {
+        DecimalFormat formatter = new DecimalFormat("#0.00");
+
+        JOptionPane.showMessageDialog(
+                null,
+                duration + " minutes at the rate of $" + rate + " per minute. \n" +
+                "Total Charges are $" + formatter.format(charges),
+                "Phone Charges",
+                JOptionPane.INFORMATION_MESSAGE
+                );
+    }
+
+    /**
+     * Displays an error message dialog with the provided window title and error message
+     *
+     * @param title    the title of the error message window
+     * @param message  the error message to display
+     */
+    void showError(String title, String message)
+    {
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
+    }
 }
