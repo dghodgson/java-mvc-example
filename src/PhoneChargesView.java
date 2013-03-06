@@ -114,4 +114,24 @@ public class PhoneChargesView extends JFrame
     {
         JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
     }
+
+    /**
+     * Adds an action listener to the specified button (for the minutely rate radio buttons)
+     *
+     * @param button  the button to which the action listener will be added
+     * @param al      the ActionListener object to add to the button
+     */
+    void addRateButtonListener(JRadioButton button, ActionListener al)
+    {
+        button.addActionListener(al);
+    }
+
+    /**
+     * Adds an action listener to the calculate button
+     *
+     * @param al  the ActionListener object to add to the button
+     */
+    void addCalcButtonListener(ActionListener al) {
+        calculateButton.addActionListener(al);
+    }
 }
