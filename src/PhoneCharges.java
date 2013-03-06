@@ -25,6 +25,13 @@ public class PhoneCharges
         final double OFFPEAK_RATE = 0.05;
 
         // Create GUI components
+        durationLabel = new JLabel("Minutes: ");
+        durationTextField = new JTextField(10);
+        
+        calculateButton = new JButton("Calculate Charges");
+        calculateButtonListener = new CalcButtonListener();
+        calculateButton.addActionListener(calculateButtonListener);
+        
         rateDaytimeRB = new JRadioButton("Daytime - 8:00 a.m. to 5:00 p.m.", true);
         rateEveningRB = new JRadioButton("Evening - 5:00 p.m. to 11:00 p.m.", false);
         rateOffpeakRB = new JRadioButton("Off-Peak - 11:00 p.m. to 8:00 a.m.", false);
@@ -39,13 +46,10 @@ public class PhoneCharges
             rateDaytimeRB.addActionListener(new RadioButtonListener());
             rateEveningRB.addActionListener(new RadioButtonListener());
             rateOffpeakRB.addActionListener(new RadioButtonListener());
-
-        durationLabel = new JLabel("Minutes: ");
-        durationTextField = new JTextField(10);
-        
-        calculateButton = new JButton("Calculate Charges");
-        calculateButtonListener = new CalcButtonListener();
-        calculateButton.addActionListener(calculateButtonListener);
+            
+            //  Trigger rate change in CalcButtonListener class so DAYTIME_RATE
+            //+ is used as the default rate
+            rateDaytimeRB.doClick();
 
         // Create panels and add components
         ratePanel = new JPanel();
