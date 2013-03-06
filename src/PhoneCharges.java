@@ -86,14 +86,6 @@ public class PhoneCharges
 
     private class RadioButtonListener implements ActionListener
     {
-
-        private double rate;
-        
-        public RadioButtonListener(double r)
-        {
-            rate = r;
-        }
-        
         @Override
         public void actionPerformed(ActionEvent e)
         {
