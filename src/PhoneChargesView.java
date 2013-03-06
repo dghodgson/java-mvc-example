@@ -24,9 +24,6 @@ public class PhoneChargesView extends JFrame
      */
     PhoneChargesView()
     {
-        final int WINDOW_WIDTH = 280;
-        final int WINDOW_HEIGHT = 235;
-
         // Create GUI components
         rateDaytimeRB = new JRadioButton("Daytime - 8:00 a.m. to 5:00 p.m.", true);
         rateEveningRB = new JRadioButton("Evening - 5:00 p.m. to 11:00 p.m.", false);
@@ -63,13 +60,13 @@ public class PhoneChargesView extends JFrame
 
         // Create a frame and add the panels
         this.setTitle("Phone Charges");
-        this.setLayout(new FlowLayout(FlowLayout.CENTER));
-        this.add(ratePanel);
-        this.add(durationPanel);
-        this.add(calculatePanel);
+        this.setLayout(new BorderLayout());
+        this.add(ratePanel, BorderLayout.NORTH);
+        this.add(durationPanel, BorderLayout.CENTER);
+        this.add(calculatePanel, BorderLayout.SOUTH);
 
         // Set display properties for the frame
-        this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        this.pack();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
