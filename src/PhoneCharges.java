@@ -125,10 +125,12 @@ public class PhoneCharges
             }
             catch (NumberFormatException nfe)
             {
-                JOptionPane.showMessageDialog(null,
+                JOptionPane.showMessageDialog(
+                        null,
                         "Minutes not valid",
                         "Input error",
-                        JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.ERROR_MESSAGE
+                        );
             }
         }
         
@@ -139,7 +141,9 @@ public class PhoneCharges
             JOptionPane.showMessageDialog(
                     null,
                     duration + " minutes at the rate of $" + rate + " per minute. \n" +
-                    "Total Charges are $" + formatter.format(charges)
+                    "Total Charges are $" + formatter.format(charges),
+                    "Phone Charges",
+                    JOptionPane.INFORMATION_MESSAGE
                     );
         }
         
