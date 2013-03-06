@@ -15,14 +15,15 @@ public class PhoneCharges
     private static JButton      calculateButton;
     
     private static CalcButtonListener calculateButtonListener;
+    
+    public static final double DAYTIME_RATE = 0.25;
+    public static final double EVENING_RATE = 0.12;
+    public static final double OFFPEAK_RATE = 0.05;
+
     public PhoneCharges()
     {
         final int WINDOW_WIDTH = 280;
         final int WINDOW_HEIGHT = 235;
-        
-        final double DAYTIME_RATE = 0.25;
-        final double EVENING_RATE = 0.12;
-        final double OFFPEAK_RATE = 0.05;
 
         // Create GUI components
         durationLabel = new JLabel("Minutes: ");
