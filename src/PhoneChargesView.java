@@ -74,4 +74,13 @@ public class PhoneChargesView extends JFrame
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Gets the value entered into durationTextField by the user
+     *
+     * @return the duration of the call in minutes
+     */
+    String getUserInput()
+    {
+        return durationTextField.getText();
+    }
 }
