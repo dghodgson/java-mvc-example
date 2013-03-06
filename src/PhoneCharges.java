@@ -1,9 +1,9 @@
 /**
- * Main class for Phone Charges calculator </ br>
+ * Main class for Phone Charges calculator: 
  * Creates the Model, View, and Controller objects, and sets the GUI's visibility to true
  *
  * @author Daniel Hodgson (daniel.hodgson@codeprogrammers.net)
- * @version 1.0
+ * @version 2.0
  */
 public class PhoneCharges
 {
