@@ -23,9 +23,6 @@ public class PhoneCharges
 
     public PhoneCharges()
     {
-        final int WINDOW_WIDTH = 280;
-        final int WINDOW_HEIGHT = 235;
-
         // Create GUI components
         durationLabel = new JLabel("Minutes: ");
         durationTextField = new JTextField(10);
@@ -73,14 +70,14 @@ public class PhoneCharges
 
         // Create a frame and add the panels
         phoneChargesFrame = new JFrame("Phone Charges");
-        phoneChargesFrame.setLayout(new FlowLayout(FlowLayout.CENTER));
-        phoneChargesFrame.add(ratePanel);
-        phoneChargesFrame.add(durationPanel);
-        phoneChargesFrame.add(calculatePanel);
+        phoneChargesFrame.setLayout(new BorderLayout());
+        phoneChargesFrame.add(ratePanel, BorderLayout.NORTH);
+        phoneChargesFrame.add(durationPanel, BorderLayout.CENTER);
+        phoneChargesFrame.add(calculatePanel, BorderLayout.SOUTH);
         
         // Display the frame on the screen
         phoneChargesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        phoneChargesFrame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        phoneChargesFrame.pack();
         phoneChargesFrame.setLocationRelativeTo(null); // center on screen
         phoneChargesFrame.setVisible(true);
     }
