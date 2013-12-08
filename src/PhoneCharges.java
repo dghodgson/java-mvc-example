@@ -3,7 +3,7 @@
  * Creates the Model, View, and Controller objects, and sets the GUI's visibility to true
  *
  * @author Daniel Hodgson (daniel.hodgson@codeprogrammers.net)
- * @version 2.0
+ * @version 2.2
  */
 public class PhoneCharges
 {
@@ -11,7 +11,7 @@ public class PhoneCharges
     {
         PhoneChargesModel      model      = new PhoneChargesModel();
         PhoneChargesView       view       = new PhoneChargesView();
-        PhoneChargesController controller = new PhoneChargesController(model, view);
+        new PhoneChargesController(model, view);
 
         view.setVisible(true);
     }
