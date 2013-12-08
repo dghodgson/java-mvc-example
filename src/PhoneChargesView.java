@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
+import java.util.Enumeration;
 
 import javax.swing.*;
 
@@ -9,8 +10,9 @@ import javax.swing.*;
  * Handles GUI implementation
  *
  * @author Daniel Hodgson (daniel.hodgson@codeprogrammers.net)
- * @version 1.0
+ * @version 1.1
  */
+@SuppressWarnings ("serial") // No need for serialVersionUID since this class won't be serialized
 public class PhoneChargesView extends JFrame
 {
     private JPanel       ratePanel, durationPanel, calculatePanel;
@@ -18,7 +20,8 @@ public class PhoneChargesView extends JFrame
     private JLabel       durationLabel;
     private JTextField   durationTextField;
     private JButton      calculateButton;
-
+    private ButtonGroup  radioButtonGroup;
+    
     /**
      * Constructor, creates GUI components, sets up panels and frame
      */
@@ -28,12 +31,12 @@ public class PhoneChargesView extends JFrame
         rateDaytimeRB = new JRadioButton("Daytime - 8:00 a.m. to 5:00 p.m.", true);
         rateEveningRB = new JRadioButton("Evening - 5:00 p.m. to 11:00 p.m.", false);
         rateOffpeakRB = new JRadioButton("Off-Peak - 11:00 p.m. to 8:00 a.m.", false);
-
+        
             // Put radio buttons in same group
-            ButtonGroup group = new ButtonGroup();
-            group.add(rateDaytimeRB);
-            group.add(rateEveningRB);
-            group.add(rateOffpeakRB);
+            radioButtonGroup = new ButtonGroup();
+            radioButtonGroup.add(rateDaytimeRB);
+            radioButtonGroup.add(rateEveningRB);
+            radioButtonGroup.add(rateOffpeakRB);
 
         durationLabel = new JLabel("Minutes: ");
         durationTextField = new JTextField(10);
@@ -42,11 +45,13 @@ public class PhoneChargesView extends JFrame
 
         // Create panels and add components
         ratePanel = new JPanel();
-        ratePanel.setLayout(new GridLayout(3,1));
+        ratePanel.setLayout(new GridLayout(radioButtonGroup.getButtonCount(),1));
         ratePanel.setBorder(BorderFactory.createTitledBorder("Select a Rate"));
-        ratePanel.add(rateDaytimeRB);
-        ratePanel.add(rateEveningRB);
-        ratePanel.add(rateOffpeakRB);
+        
+        for (JRadioButton radioButton : getRateButtons())
+        {
+            ratePanel.add(radioButton);
+        }
 
         durationPanel = new JPanel();
         durationPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -88,7 +93,18 @@ public class PhoneChargesView extends JFrame
      */
     JRadioButton[] getRateButtons()
     {
-        JRadioButton[] array = {rateDaytimeRB, rateEveningRB, rateOffpeakRB};
+        int size = radioButtonGroup.getButtonCount();
+        JRadioButton[] array = new JRadioButton[size];
+        
+        // Get an enumeration of all the buttons in the ButtonGroup
+        Enumeration<AbstractButton> rbgEnum = radioButtonGroup.getElements();
+        
+        for (int i = 0; i < array.length; i++)
+        {
+            // Cast the AbstractButton as a JRadioButton and add it to the array
+            array[i] = (JRadioButton) rbgEnum.nextElement();
+        }
+        
         return array;
     }
 
